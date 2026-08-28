@@ -1,0 +1,34 @@
+### Obtener todos los juegos
+GET http://localhost:5000/api/juegos
+Accept: application/json
+
+### Crear un nuevo juego
+POST http://localhost:5000/api/juegos
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Halo Infinite",
+  "descripcion": "Shooter futurista",
+  "precio": 59.9
+}
+
+
+### Obtener un juego específico
+GET http://localhost:5000/api/juegos/1
+Accept: application/json
+
+
+### Actualizar un juego
+PUT http://localhost:5000/api/juegos/1
+Content-Type: application/json
+
+{
+  "nombre": "Halo 2 Remastered",
+  "descripcion": "Actualización del clásico",
+  "precio": 69.99
+}
+
+
+### Eliminar un juego
+DELETE http://localhost:5000/api/juegos/5

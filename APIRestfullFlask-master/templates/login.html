@@ -1,0 +1,54 @@
+{% extends "maestra.html" %}
+
+{% block titulo %}Iniciar sesión{% endblock %}
+
+{% block contenido %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Iniciar sesión</h1>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.hidden_tag() }}
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+          {% if mensajes %}
+            <div class="mt-3">
+              {% for categoria, mensaje in mensajes %}
+                <div class="notification is-{{ categoria }}">
+                  {{ mensaje }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+
+            <div class="field">
+                {{ form.username.label(class="label") }}
+                <div class="control">
+                    {{ form.username(class="input", placeholder="Usuario") }}
+                </div>
+            </div>
+
+            <div class="field">
+                {{ form.password.label(class="label") }}
+                <div class="control">
+                    {{ form.password(class="input", placeholder="Contraseña") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        {{ form.remember_me() }} Recordarme
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    {{ form.submit(class="button is-primary") }}
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
